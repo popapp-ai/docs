@@ -1,0 +1,119 @@
+# PopApp UI [Native StyleSheet. Native gestures. Native haptics. No Tailwind required.]
+
+PopApp UI is a **shadcn-style component registry** for React Native and Expo. Copy beautiful, production-ready components into your project with a single command.
+
+## Why PopApp UI?
+
+:::success[Own Your Code]
+PopApp follows the copy-and-own model — every component lives in your project, fully customizable. No opaque `node_modules`.
+:::
+
+- **StyleSheet-native** — no NativeWind, no Tailwind, no className resolution
+- **Gesture-first** — spring physics and UI-thread animations via Reanimated
+- **Haptic feedback** — built into every interactive component
+- **Liquid Glass** — iOS 26+ glass effects where supported
+- **TypeScript-first** — full type safety with exported interfaces
+- **Expo-optimized** — works out of the box with Expo, compatible with bare RN
+
+## Quick Start
+
+::::steps
+
+##### Initialize your project
+
+```bash [Terminal]
+npx popapp init
+```
+
+This scaffolds the directory structure and installs the theme system.
+
+##### Add components
+
+```bash [Terminal]
+npx popapp add button card text-input
+```
+
+Dependencies are resolved automatically — adding `button` also installs `theme`, `haptics`, `glass`, and `touchable`.
+
+##### Use in your app
+
+```tsx
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+
+export function MyScreen() {
+  return (
+    <Card>
+      <Button title="Get Started" onPress={() => {}} />
+    </Card>
+  );
+}
+```
+
+::::
+
+## Animation Tiers
+
+Every component declares an animation tier so you know exactly what native dependencies are required.
+
+| Tier | Dependencies | Description |
+|------|-------------|-------------|
+| **Tier 1** | None | Pure React Native. Zero animation dependencies. |
+| **Tier 2** | `react-native-reanimated` | Spring animations on the UI thread. Included in Expo by default. |
+| **Tier 3** | `reanimated` + `gesture-handler` | Full gesture control with pan, pinch, and swipe support. |
+
+## Component Registry
+
+### UI Components
+
+| Component | Description | Tier |
+|-----------|-------------|------|
+| [`button`](/components/button) | Pressable button with variants, sizes, loading state, and haptic feedback | 1 |
+| `card` | Composable card container with header, content, and footer | 1 |
+| `text-input` | Themed text input with label, error state, and icon slots | 1 |
+| `text-area` | Multiline text input with configurable height | 1 |
+| `badge` | Status badge with color variants | 1 |
+| `separator` | Horizontal or vertical divider line | 1 |
+| `icon-symbol` | Cross-platform icon: SF Symbols on iOS, Material Icons on Android/web | 1 |
+| `svg-icons` | Custom SVG icon extension for `icon-symbol` | 1 |
+| `action-icon` | Circular icon button with Liquid Glass support | 1 |
+| `theme-icon` | Icon wrapped in a tinted circle background | 1 |
+| `otp-input` | One-time password input with individual digit boxes | 1 |
+| `date-picker` | Three-column month/day/year picker with native scroll wheels | 1 |
+| `list` | iOS Settings-style grouped list with navigation, toggle, and action cells | 1 |
+| `markdown` | Themed markdown renderer with code block copy button | 1 |
+| `touchable` | Animated pressable with spring scale and opacity | 2 |
+| `skeleton` | Pulsing loading placeholder | 2 |
+| `choice-card` | Selectable card for picking an option from a set | 2 |
+| `choice-binary` | Two-option selector using side-by-side ChoiceCards | 2 |
+| `option-card` | Selectable list option with checkbox, icon, and description | 2 |
+| `option-group` | Single or multi-select option list using OptionCards | 2 |
+| `progress-ring` | Animated circular progress indicator | 2 |
+| `ticker` | Animated number ticker with staggered digit rolls | 2 |
+| `input-stepper` | Numeric stepper with animated ticker display | 2 |
+| `animated-content` | Spring-based enter/exit content transitions | 2 |
+| `screen` | Composable screen layout with keyboard-aware content | 2 |
+| `onboarding` | Step-based onboarding engine with progress and skip logic | 2 |
+| `slider-bar` | Gesture-controlled slider with step snapping and haptics | 3 |
+| `ruler-slider` | iOS-style ruler picker with Skia rendering and momentum scrolling | 3 |
+| `bottom-sheet` | Modal bottom sheet with pan-to-dismiss gesture | 3 |
+
+### Libraries & Utilities
+
+| Item | Type | Description |
+|------|------|-------------|
+| `theme` | Library | Token-based theme system with light/dark mode |
+| `haptics` | Library | Safe haptics wrapper (never crashes without `expo-haptics`) |
+| `glass` | Library | Liquid Glass wrapper (graceful fallback on non-iOS 26) |
+| `gradient-tint` | Library | Gradient fade for headers, footers, and scroll edges |
+| `use-color-scheme` | Hook | Color scheme hook with safe default |
+
+### Templates
+
+| Template | Description |
+|----------|-------------|
+| `auth-supabase` | Supabase auth with MMKV persistence, Zustand store, and React Query |
+
+:::tip
+Run `npx popapp list` to see all available items directly in your terminal.
+:::
