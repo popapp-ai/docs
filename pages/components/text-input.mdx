@@ -2,7 +2,7 @@ import { PreviewImage } from '../../components/preview-image'
 
 # TextInput
 
-Themed text input with label, error state, and icon slots.
+Native text input with filled/outline variants, label, error state, and icon slots.
 
 - **Tier 1** — no animation dependencies
 - **Registry deps:** [Theme](/theme)
@@ -24,28 +24,31 @@ import { TextInput } from "@/components/ui/text-input";
 />
 ```
 
+## Variants
+
+<PreviewImage src="/images/input-variants.png" alt="TextInput variants" />
+
+```tsx
+{/* Filled (default) — native iOS-style background fill */}
+<TextInput
+  label="Filled"
+  placeholder="Native filled input..."
+  variant="filled"
+/>
+
+{/* Outline — subtle border, no background */}
+<TextInput
+  label="Outline"
+  placeholder="Outline input..."
+  variant="outline"
+/>
+```
+
 ## States
 
 <PreviewImage src="/images/input-states.png" alt="Input states" />
 
 ```tsx
-{/* Focused */}
-<TextInput
-  label="Email"
-  placeholder="you@example.com"
-  value={email}
-  onChangeText={setEmail}
-/>
-
-{/* With password toggle */}
-<TextInput
-  label="Password"
-  placeholder="Enter password"
-  secureTextEntry
-  value={password}
-  onChangeText={setPassword}
-/>
-
 {/* With error */}
 <TextInput
   label="With Error"
@@ -63,15 +66,29 @@ import { TextInput } from "@/components/ui/text-input";
 />
 ```
 
-## With icons
+## With Icons
+
+<PreviewImage src="/images/input-with-icons.png" alt="TextInput with icons and sections" />
 
 ```tsx
 <TextInput
   label="Search"
+  placeholder="Search products..."
   leftSection={<IconSymbol name="magnifyingglass" size={18} color={colors.icon} />}
-  rightSection={<ActionIcon name="xmark" size="xs" onPress={clear} />}
-  value={query}
-  onChangeText={setQuery}
+/>
+
+<TextInput
+  label="Website"
+  placeholder="example.com"
+  variant="outline"
+  leftSection={<Text style={{ fontSize: 15, color: colors.foregroundSecondary }}>https://</Text>}
+/>
+
+<TextInput
+  label="Price"
+  placeholder="0.00"
+  leftSection={<Text style={{ fontSize: 15, color: colors.foregroundSecondary }}>$</Text>}
+  rightSection={<Text style={{ fontSize: 13, color: colors.foregroundSecondary }}>USD</Text>}
 />
 ```
 
@@ -91,7 +108,8 @@ import { TextInput } from "@/components/ui/text-input";
 |------|------|---------|-------------|
 | `label` | `string` | — | Label above the input |
 | `error` | `string` | — | Error message below the input |
-| `size` | `"sm" \| "md" \| "lg" \| "xl"` | `"md"` | Input height |
+| `variant` | `"filled" \| "outline"` | `"filled"` | Visual style variant |
+| `size` | `"sm" \| "md" \| "lg" \| "xl"` | `"lg"` | Input height |
 | `leftSection` | `ReactNode` | — | Left icon/element |
 | `rightSection` | `ReactNode` | — | Right icon/element |
 | `disabled` | `boolean` | `false` | Disable interaction |

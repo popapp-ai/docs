@@ -2,7 +2,7 @@ import { PreviewImage } from '../../components/preview-image'
 
 # OptionGroup
 
-Single or multi-select option list using [OptionCards](/components/option-card).
+Single or multi-select option group with vertical/horizontal layout using [OptionCards](/components/option-card).
 
 - **Tier 2** — requires `react-native-reanimated`
 - **Registry deps:** [OptionCard](/components/option-card)
@@ -49,6 +49,25 @@ const [features, setFeatures] = useState<string[]>([]);
 />
 ```
 
+## Horizontal layout
+
+Use `layout="horizontal"` for side-by-side selection (great for binary choices):
+
+```tsx
+<OptionGroup
+  mode="single"
+  layout="horizontal"
+  value={preference}
+  onChange={setPreference}
+  options={[
+    { value: "window", label: "Window", icon: <IconSymbol name="sun.max.fill" size={24} /> },
+    { value: "aisle", label: "Aisle", icon: <IconSymbol name="figure.walk" size={24} /> },
+  ]}
+/>
+```
+
+Horizontal layout automatically uses `align="center"` on each card, stacking icon and label vertically.
+
 ## Simple multi select
 
 <PreviewImage src="/images/option-group-multi-select-simply.png" alt="Simple multi select" />
@@ -92,6 +111,7 @@ The component uses a discriminated union based on `mode`:
 | `value` | `string \| null` | Selected value |
 | `onChange` | `(value: string) => void` | Change handler |
 | `options` | `OptionGroupOption[]` | Available options |
+| `layout` | `"vertical" \| "horizontal"` | Layout direction (default: `"vertical"`) |
 | `haptic` | `boolean` | Haptic feedback |
 
 ### Multi select
@@ -102,4 +122,5 @@ The component uses a discriminated union based on `mode`:
 | `value` | `string[]` | Selected values |
 | `onChange` | `(value: string[]) => void` | Change handler |
 | `options` | `OptionGroupOption[]` | Available options |
+| `layout` | `"vertical" \| "horizontal"` | Layout direction (default: `"vertical"`) |
 | `haptic` | `boolean` | Haptic feedback |

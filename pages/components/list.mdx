@@ -11,75 +11,7 @@ iOS Settings-style grouped list with navigation, toggle, and action cells.
 npx popapp add list
 ```
 
-## Usage
-
-```tsx
-import {
-  ListSection,
-  ListNavigationCell,
-  ListToggleCell,
-  ListActionCell,
-  ListDivider,
-} from "@/components/ui/list";
-
-<ListSection title="General">
-  <ListNavigationCell
-    icon="person.fill"
-    label="Account"
-    value="john@example.com"
-    onPress={() => router.push("/account")}
-  />
-  <ListNavigationCell
-    icon="bell.fill"
-    label="Notifications"
-    onPress={() => router.push("/notifications")}
-  />
-  <ListNavigationCell
-    icon="globe"
-    label="Language"
-    value="English"
-    onPress={() => router.push("/language")}
-    last
-  />
-</ListSection>
-
-<ListSection title="Preferences">
-  <ListToggleCell
-    icon="moon.fill"
-    label="Dark Mode"
-    value={isDark}
-    onToggle={setIsDark}
-  />
-  <ListToggleCell
-    icon="bell.fill"
-    label="Notifications"
-    value={notifications}
-    onToggle={setNotifications}
-  />
-  <ListToggleCell
-    icon="chart.bar.fill"
-    label="Analytics"
-    value={analytics}
-    onToggle={setAnalytics}
-    last
-  />
-</ListSection>
-
-<ListSection>
-  <ListActionCell
-    label="Reset Settings"
-    onPress={handleReset}
-  />
-  <ListActionCell
-    label="Delete Account"
-    destructive
-    onPress={handleDelete}
-    last
-  />
-</ListSection>
-```
-
-## Cell types
+## Cell Types
 
 ### ListNavigationCell
 
@@ -87,17 +19,79 @@ A row with a chevron that navigates somewhere on press. Shows an optional `value
 
 <PreviewImage src="/images/list-cell-nav.png" alt="Navigation cell" />
 
+```tsx
+<ListSection title="Account">
+  <ListNavigationCell
+    icon="person.circle.fill"
+    label="Profile"
+    value="Jane Cooper"
+    onPress={() => router.push("/profile")}
+  />
+  <ListNavigationCell
+    icon="envelope.fill"
+    label="Email"
+    value="jane@co.com"
+    onPress={() => router.push("/email")}
+  />
+  <ListNavigationCell
+    icon="key.fill"
+    label="Password"
+    value="Changed 3 days ago"
+    onPress={() => router.push("/password")}
+    last
+  />
+</ListSection>
+```
+
 ### ListToggleCell
 
 A row with a switch. Controlled via `value` and `onToggle`.
 
 <PreviewImage src="/images/list-cell-toggle.png" alt="Toggle cell" />
 
+```tsx
+<ListSection title="Preferences">
+  <ListToggleCell
+    icon="bell.badge.fill"
+    label="Notifications"
+    value={notifications}
+    onToggle={setNotifications}
+  />
+  <ListToggleCell
+    icon="arrow.down.circle.fill"
+    label="Auto-Update"
+    value={autoUpdate}
+    onToggle={setAutoUpdate}
+  />
+  <ListToggleCell
+    icon="location.fill"
+    label="Location Services"
+    value={location}
+    onToggle={setLocation}
+  />
+  <ListToggleCell
+    icon="chart.bar.fill"
+    label="Share Analytics"
+    value={analytics}
+    onToggle={setAnalytics}
+    last
+  />
+</ListSection>
+```
+
 ### ListActionCell
 
 A centered-text action button. Use `destructive` for red styling.
 
 <PreviewImage src="/images/list-cell-action.png" alt="Action cell" />
+
+```tsx
+<ListSection>
+  <ListActionCell label="Restore Purchases" onPress={handleRestore} />
+  <ListActionCell label="Clear Cache" onPress={handleClearCache} />
+  <ListActionCell label="Delete All Data" destructive onPress={handleDelete} last />
+</ListSection>
+```
 
 ### ListDivider
 
