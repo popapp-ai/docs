@@ -2,7 +2,7 @@ import { PreviewImage } from '../../components/preview-image'
 
 # TextArea
 
-Multiline text input with label, error state, and configurable height.
+Native multiline input with filled/outline variants, label, error state, and configurable height.
 
 - **Tier 1** — no animation dependencies
 - **Registry deps:** [Theme](/theme)
@@ -13,8 +13,6 @@ npx popapp add text-area
 
 ## Usage
 
-<PreviewImage src="/images/textarea-states.png" alt="TextArea states" />
-
 ```tsx
 import { TextArea } from "@/components/ui/text-area";
 
@@ -24,11 +22,38 @@ import { TextArea } from "@/components/ui/text-area";
   value={comments}
   onChangeText={setComments}
 />
+```
 
+## Variants
+
+<PreviewImage src="/images/textarea-variants.png" alt="TextArea variants" />
+
+```tsx
+{/* Filled (default) — native background fill */}
 <TextArea
-  label="With Error"
-  placeholder="Min 20 chars"
-  error="Too short"
+  label="Feedback"
+  placeholder="Tell us what you think..."
+  variant="filled"
+/>
+
+{/* Outline — subtle border, no background */}
+<TextArea
+  label="Bug Report"
+  placeholder="Describe the issue..."
+  variant="outline"
+/>
+```
+
+## With Error
+
+<PreviewImage src="/images/textarea-error.png" alt="TextArea error state" />
+
+```tsx
+<TextArea
+  label="Description"
+  placeholder="Min 20 characters"
+  error="Please provide at least 20 characters"
+  variant="outline"
   value={text}
   onChangeText={setText}
 />
@@ -52,6 +77,7 @@ import { TextArea } from "@/components/ui/text-area";
 |------|------|---------|-------------|
 | `label` | `string` | — | Label above the textarea |
 | `error` | `string` | — | Error message below |
+| `variant` | `"filled" \| "outline"` | `"filled"` | Visual style variant |
 | `minHeight` | `number` | `120` | Minimum height in pixels |
 | `maxHeight` | `number` | — | Maximum height |
 | `disabled` | `boolean` | `false` | Disable interaction |

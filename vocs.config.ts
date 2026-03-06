@@ -78,8 +78,6 @@ export default defineConfig({
         {
           text: 'Selection',
           items: [
-            { text: 'ChoiceCard', link: '/components/choice-card' },
-            { text: 'ChoiceBinary', link: '/components/choice-binary' },
             { text: 'OptionCard', link: '/components/option-card' },
             { text: 'OptionGroup', link: '/components/option-group' },
           ],

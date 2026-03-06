@@ -56,7 +56,7 @@ All form components are **controlled** — you manage the state:
 const [value, setValue] = useState("");
 
 <TextInput value={value} onChangeText={setValue} />
-<ChoiceCard selected={value === "a"} onPress={() => setValue("a")} />
+<OptionCard label="Option A" selected={value === "a"} onPress={() => setValue("a")} />
 <OptionGroup mode="single" value={value} onChange={setValue} options={[...]} />
 ```
 
@@ -75,7 +75,7 @@ Interactive components have haptics enabled by default. Disable per-component:
 
 ```tsx
 <Button title="Save" haptic={false} />
-<ChoiceCard title="Option" haptic={false} />
+<OptionCard label="Option" selected={false} onPress={() => {}} haptic={false} />
 <Touchable haptic={false}>{/* ... */}</Touchable>
 ```
 

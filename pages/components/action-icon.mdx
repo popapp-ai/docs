@@ -11,26 +11,29 @@ Circular icon button with Liquid Glass support and size/variant options.
 npx popapp add action-icon
 ```
 
-## Usage
+## Variants
 
-<PreviewImage src="/images/action-icons-variations.png" alt="ActionIcon variations" />
+<PreviewImage src="/images/action-icon-variants.png" alt="ActionIcon variants" />
 
 ```tsx
 import { ActionIcon } from "@/components/ui/action-icon";
 
-<ActionIcon name="plus" onPress={handleAdd} />
-<ActionIcon name="heart.fill" onPress={handleFavorite} />
-<ActionIcon name="trash" variant="solid" size="lg" onPress={handleDelete} />
-<ActionIcon name="square.and.arrow.up" onPress={handleShare} />
+<ActionIcon name="plus" variant="solid" onPress={handleAdd} />
+<ActionIcon name="plus" variant="subtle" onPress={handleFavorite} />
+<ActionIcon name="plus" variant="outline" onPress={handleDelete} />
+<ActionIcon name="plus" variant="ghost" onPress={handleShare} />
+<ActionIcon name="plus" variant="destructive" onPress={handleRemove} />
 ```
 
 ## Sizes
 
+<PreviewImage src="/images/action-icon-sizes.png" alt="ActionIcon sizes" />
+
 ```tsx
-<ActionIcon name="plus" size="xs" />  {/* 32px */}
-<ActionIcon name="plus" size="sm" />  {/* 38px */}
-<ActionIcon name="plus" size="md" />  {/* 44px */}
-<ActionIcon name="plus" size="lg" />  {/* 56px */}
+<ActionIcon name="heart.fill" size="xs" />  {/* 32px */}
+<ActionIcon name="heart.fill" size="sm" />  {/* 38px */}
+<ActionIcon name="heart.fill" size="md" />  {/* 44px */}
+<ActionIcon name="heart.fill" size="lg" />  {/* 56px */}
 ```
 
 ## Props
