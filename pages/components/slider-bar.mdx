@@ -33,6 +33,18 @@ import { SliderBar } from "@/components/ui/slider-bar";
 />
 ```
 
+## Thick track variant
+
+A pill-shaped slider with no thumb — ideal for compact controls like volume or brightness.
+
+```tsx
+<SliderBar
+  value={volume}
+  onValueChange={setVolume}
+  variant="track"
+/>
+```
+
 ## With step snapping
 
 ```tsx
@@ -47,6 +59,8 @@ import { SliderBar } from "@/components/ui/slider-bar";
 
 ## With labels
 
+Pressing a label jumps the slider to that position.
+
 ```tsx
 <SliderBar
   value={intensity}
@@ -59,6 +73,20 @@ import { SliderBar } from "@/components/ui/slider-bar";
 />
 ```
 
+## Sticky finger
+
+By default the `"thumb"` variant snaps the thumb to your finger on touch start so dragging feels direct. Set `stickyToFinger={false}` to preserve the initial offset (useful when the thumb is large or precision matters).
+
+```tsx
+<SliderBar
+  value={val}
+  onValueChange={setVal}
+  stickyToFinger={false}
+/>
+```
+
+The `"track"` variant defaults to `stickyToFinger={false}` — override with `stickyToFinger={true}` if you want direct tracking.
+
 ## Props
 
 | Prop | Type | Default | Description |
@@ -68,5 +96,7 @@ import { SliderBar } from "@/components/ui/slider-bar";
 | `min` | `number` | `0` | Minimum value |
 | `max` | `number` | `1` | Maximum value |
 | `step` | `number` | `0` | Step size (0 = continuous) |
-| `labels` | `SliderLabel[]` | — | Position labels with optional icons |
+| `labels` | `SliderLabel[]` | — | Position labels with optional icons (tappable) |
 | `haptic` | `boolean` | `true` | Haptic feedback on step changes |
+| `variant` | `"thumb" \| "track"` | `"thumb"` | Visual style — thin track with thumb or thick pill track |
+| `stickyToFinger` | `boolean` | `true` (thumb) / `false` (track) | Animate thumb to finger on touch start for direct tracking |
