@@ -1,5 +1,7 @@
 import { defineConfig } from 'vocs'
 
+
+
 export default defineConfig({
   title: 'PopApp UI',
   description: 'React Native component registry for Expo apps',
@@ -10,6 +12,22 @@ export default defineConfig({
     light: '/assets/ui-logo-light.svg',
     dark: '/assets/ui-logo-dark.svg',
   },
+  aiCta: {  
+    query: ({ location }) => { 
+      const fixLocation = (location: string, basePath: string) => {
+        try {
+          const url = new URL(location)
+          const base = basePath.startsWith('/') ? basePath : `/${basePath}`
+          const path = url.pathname === '/' ? '' : url.pathname
+          url.pathname = base + path
+          return url.toString()
+        } catch {
+          return location
+        }
+      }
+      return `Please research and analyze this page: ${fixLocation(location, '/docs')} so I can ask you questions about it.`
+    } 
+  }, 
   topNav: [
     { text: 'PopApp', link: 'https://popapp.dev' },
     { text: 'GitHub', link: 'https://github.com/popapp-ai/ui' },
