@@ -1,0 +1,40 @@
+# OptionCard
+
+Selectable list option with optional checkbox, icon, and description.
+
+- **Tier 2** — requires `react-native-reanimated`
+- **Registry deps:** [Theme](/theme), [Haptics](/utils/haptics), [Touchable](/components/touchable), [IconSymbol](/components/icon-symbol)
+
+```bash [Terminal]
+npx popapp add option-card
+```
+
+## Usage
+
+```tsx
+import { OptionCard } from "@/components/ui/option-card";
+
+<OptionCard
+  label="Push Notifications"
+  description="Get notified about updates"
+  selected={pushEnabled}
+  onPress={() => setPushEnabled(!pushEnabled)}
+  showCheckbox
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Option label |
+| `description` | `string` | — | Description text |
+| `icon` | `ReactNode` | — | Leading icon |
+| `selected` | `boolean` | — | Selection state |
+| `onPress` | `() => void` | — | Press handler |
+| `showCheckbox` | `boolean` | `false` | Show a checkbox indicator |
+| `haptic` | `boolean` | `true` | Haptic feedback |
+
+:::tip
+For managing groups of options with single/multi select, use [OptionGroup](/components/option-group).
+:::

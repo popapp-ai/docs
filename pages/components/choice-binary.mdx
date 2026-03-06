@@ -1,0 +1,48 @@
+import { PreviewImage } from '../../components/preview-image'
+
+# ChoiceBinary
+
+Two-option selector using side-by-side [ChoiceCards](/components/choice-card).
+
+- **Tier 2** — requires `react-native-reanimated`
+- **Registry deps:** [ChoiceCard](/components/choice-card)
+
+```bash [Terminal]
+npx popapp add choice-binary
+```
+
+## Usage
+
+<PreviewImage src="/images/choice-binary.png" alt="Binary choice" />
+
+```tsx
+import { ChoiceBinary } from "@/components/ui/choice-binary";
+
+<ChoiceBinary
+  options={[
+    { value: "metric", label: "Metric", icon: <IconSymbol name="ruler" /> },
+    { value: "imperial", label: "Imperial", icon: <IconSymbol name="ruler" /> },
+  ]}
+  value={system}
+  onChange={setSystem}
+/>
+```
+
+## Types
+
+```tsx
+interface BinaryOption {
+  value: string;
+  label: string;
+  icon?: ReactNode;
+}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `options` | `[BinaryOption, BinaryOption]` | — | Exactly two options |
+| `value` | `string \| null` | — | Selected value |
+| `onChange` | `(value: string) => void` | — | Change handler |
+| `haptic` | `boolean` | `true` | Haptic feedback |

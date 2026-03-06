@@ -1,0 +1,85 @@
+import { PreviewImage } from '../../components/preview-image'
+
+# OptionGroup
+
+Single or multi-select option list using [OptionCards](/components/option-card).
+
+- **Tier 2** — requires `react-native-reanimated`
+- **Registry deps:** [OptionCard](/components/option-card)
+
+```bash [Terminal]
+npx popapp add option-group
+```
+
+## Single select
+
+<PreviewImage src="/images/option-group-single-select.png" alt="Single select" />
+
+```tsx
+import { OptionGroup } from "@/components/ui/option-group";
+
+<OptionGroup
+  mode="single"
+  value={goal}
+  onChange={setGoal}
+  options={[
+    { value: "lose", label: "Lose Weight", description: "Caloric deficit" },
+    { value: "maintain", label: "Maintain", description: "Stay at current weight" },
+    { value: "gain", label: "Build Muscle", description: "Caloric surplus" },
+  ]}
+/>
+```
+
+## Multi select
+
+<PreviewImage src="/images/option-group-multi-select.png" alt="Multi select" />
+
+```tsx
+const [interests, setInterests] = useState<string[]>([]);
+
+<OptionGroup
+  mode="multi"
+  value={interests}
+  onChange={setInterests}
+  options={[
+    { value: "yoga", label: "Yoga", icon: <IconSymbol name="figure.yoga" /> },
+    { value: "running", label: "Running", icon: <IconSymbol name="figure.run" /> },
+    { value: "weights", label: "Weights", icon: <IconSymbol name="dumbbell.fill" /> },
+  ]}
+/>
+```
+
+## Types
+
+```tsx
+interface OptionGroupOption {
+  value: string;
+  label: string;
+  description?: string;
+  icon?: ReactNode;
+}
+```
+
+## Props
+
+The component uses a discriminated union based on `mode`:
+
+### Single select
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `mode` | `"single"` | Single selection mode |
+| `value` | `string \| null` | Selected value |
+| `onChange` | `(value: string) => void` | Change handler |
+| `options` | `OptionGroupOption[]` | Available options |
+| `haptic` | `boolean` | Haptic feedback |
+
+### Multi select
+
+| Prop | Type | Description |
+|------|------|-------------|
+| `mode` | `"multi"` | Multi-selection mode |
+| `value` | `string[]` | Selected values |
+| `onChange` | `(value: string[]) => void` | Change handler |
+| `options` | `OptionGroupOption[]` | Available options |
+| `haptic` | `boolean` | Haptic feedback |

@@ -1,0 +1,132 @@
+# Screen
+
+Composable screen layout with absolute header/footer, keyboard-aware content, gradient fading, and a sticky button option.
+
+- **Tier 2** — requires `react-native-reanimated`
+- **Registry deps:** [Theme](/theme), [Button](/components/button), [Gradient Tint](/utils/gradient-tint)
+
+```bash [Terminal]
+npx popapp add screen
+```
+
+## Usage
+
+```tsx
+import {
+  Screen,
+  ScreenHeader,
+  ScreenContent,
+  ScreenFooter,
+} from "@/components/ui/screen";
+
+<Screen>
+  <ScreenHeader title="Profile" />
+  <ScreenContent>
+    {/* Scrollable content */}
+  </ScreenContent>
+  <ScreenFooter>
+    <Button title="Save" onPress={handleSave} />
+  </ScreenFooter>
+</Screen>
+```
+
+## Header with actions
+
+```tsx
+<ScreenHeader
+  title="Settings"
+  leftSection={<ActionIcon name="arrow.left" onPress={goBack} />}
+  rightSection={<ActionIcon name="gear" onPress={openSettings} />}
+  bottomSection={<SearchBar />}
+/>
+```
+
+## Sticky button shortcut
+
+Instead of a custom footer, use the built-in sticky button:
+
+```tsx
+<ScreenContent
+  stickyButton={{
+    title: "Continue",
+    onPress: handleNext,
+    disabled: !isValid,
+  }}
+>
+  {/* Content */}
+</ScreenContent>
+```
+
+## Gradient fading
+
+Headers and footers have gradient fading enabled by default, creating a smooth transition where content scrolls behind them.
+
+```tsx
+// Adjust or disable
+<ScreenHeader gradient={false} />
+<ScreenFooter gradientOpacity={0.5} />
+```
+
+## Keyboard awareness
+
+`ScreenContent` automatically adjusts for the keyboard using `react-native-keyboard-controller`. Disable if needed:
+
+```tsx
+<Screen ignoreKeyboard>
+  {/* ... */}
+</Screen>
+```
+
+## Inside modals
+
+When used inside a modal, set `insideModal` to adjust safe area behavior:
+
+```tsx
+<Screen insideModal>
+  {/* ... */}
+</Screen>
+```
+
+## Screen Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `children` | `ReactNode` | — | Screen content |
+| `backgroundColor` | `string` | Theme background | Override background color |
+| `insideModal` | `boolean` | `false` | Adjust for modal context |
+| `extraBottomOffset` | `number` | — | Additional bottom padding |
+| `ignoreKeyboard` | `boolean` | `false` | Disable keyboard avoidance |
+| `animateInsets` | `boolean` | — | Animate safe area changes |
+
+## ScreenHeader Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string \| ReactNode` | — | Header title |
+| `leftSection` | `ReactNode` | — | Left slot (e.g., back button) |
+| `rightSection` | `ReactNode` | — | Right slot (e.g., settings icon) |
+| `bottomSection` | `ReactNode` | — | Below the title row |
+| `gradient` | `boolean` | `true` | Enable gradient fade |
+| `gradientOpacity` | `number` | `1` | Gradient intensity |
+| `transparent` | `boolean` | `false` | Transparent header background |
+
+## ScreenContent Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `scroll` | `boolean` | `true` | Enable scrolling |
+| `padTop` | `boolean` | `true` | Add top padding for header clearance |
+| `centerContent` | `boolean` | `false` | Center content vertically |
+| `scaleInEntering` | `boolean` | `false` | Scale-in animation on mount |
+| `stickyButton` | `StickyButtonConfig` | — | Built-in sticky footer button |
+
+## ScreenFooter Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `gradient` | `boolean` | `true` | Enable gradient fade |
+| `gradientOpacity` | `number` | `1` | Gradient intensity |
+
+## Exports
+
+`Screen`, `ScreenHeader`, `ScreenContent`, `ScreenFooter`, `ScreenStickyButton`, `STICKY_BUTTON_TOTAL_HEIGHT`

@@ -1,0 +1,53 @@
+import { PreviewImage } from '../../components/preview-image'
+
+# TextArea
+
+Multiline text input with label, error state, and configurable height.
+
+- **Tier 1** — no animation dependencies
+- **Registry deps:** [Theme](/theme)
+
+```bash [Terminal]
+npx popapp add text-area
+```
+
+## Usage
+
+<PreviewImage src="/images/textarea-states.png" alt="TextArea states" />
+
+```tsx
+import { TextArea } from "@/components/ui/text-area";
+
+<TextArea
+  label="Description"
+  placeholder="Tell us about yourself..."
+  value={description}
+  onChangeText={setDescription}
+/>
+```
+
+## Custom height
+
+```tsx
+<TextArea
+  label="Notes"
+  minHeight={200}
+  maxHeight={400}
+  value={notes}
+  onChangeText={setNotes}
+/>
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Label above the textarea |
+| `error` | `string` | — | Error message below |
+| `minHeight` | `number` | `120` | Minimum height in pixels |
+| `maxHeight` | `number` | — | Maximum height |
+| `disabled` | `boolean` | `false` | Disable interaction |
+| `containerStyle` | `ViewStyle` | — | Outer container style |
+| `inputStyle` | `TextStyle` | — | Inner input style |
+
+Extends `RNTextInputProps` (minus `style` and `multiline` which are handled internally).

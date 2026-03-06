@@ -8,5 +8,5 @@
     "esModuleInterop": true,
     "skipLibCheck": true
   },
-  "include": ["**/*.ts", "**/*.tsx", "**/*.mdx"]
+  "include": ["**/*.ts", "**/*.tsx", "**/*.mdx", "**/*.d.ts"]
 }

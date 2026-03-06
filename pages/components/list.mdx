@@ -1,0 +1,124 @@
+import { PreviewImage } from '../../components/preview-image'
+
+# List
+
+iOS Settings-style grouped list with navigation, toggle, and action cells.
+
+- **Tier 1** — no animation dependencies
+- **Registry deps:** [Theme](/theme), [Card](/components/card), [IconSymbol](/components/icon-symbol), [Touchable](/components/touchable)
+
+```bash [Terminal]
+npx popapp add list
+```
+
+## Usage
+
+```tsx
+import {
+  ListSection,
+  ListNavigationCell,
+  ListToggleCell,
+  ListActionCell,
+  ListDivider,
+} from "@/components/ui/list";
+
+<ListSection title="Account">
+  <ListNavigationCell
+    icon="person.fill"
+    label="Profile"
+    value="John Doe"
+    onPress={() => router.push("/profile")}
+  />
+  <ListNavigationCell
+    icon="bell.fill"
+    label="Notifications"
+    onPress={() => router.push("/notifications")}
+  />
+  <ListToggleCell
+    icon="moon.fill"
+    label="Dark Mode"
+    value={isDark}
+    onToggle={setIsDark}
+    last
+  />
+</ListSection>
+
+<ListSection title="Danger Zone">
+  <ListActionCell
+    label="Delete Account"
+    destructive
+    onPress={handleDelete}
+    last
+  />
+</ListSection>
+```
+
+## Cell types
+
+### ListNavigationCell
+
+A row with a chevron that navigates somewhere on press. Shows an optional `value` on the right.
+
+<PreviewImage src="/images/list-cell-nav.png" alt="Navigation cell" />
+
+### ListToggleCell
+
+A row with a switch. Controlled via `value` and `onToggle`.
+
+<PreviewImage src="/images/list-cell-toggle.png" alt="Toggle cell" />
+
+### ListActionCell
+
+A centered-text action button. Use `destructive` for red styling.
+
+<PreviewImage src="/images/list-cell-action.png" alt="Action cell" />
+
+### ListDivider
+
+A simple separator between cells. Used automatically by cells, but available for manual placement.
+
+## The `last` prop
+
+Set `last` on the final cell in a section to remove its bottom separator:
+
+```tsx
+<ListNavigationCell icon="gear" label="Settings" last />
+```
+
+## Props
+
+### ListSection
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | — | Section header text |
+| `children` | `ReactNode` | — | Cell components |
+
+### ListNavigationCell
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icon` | `IconSymbolName` | — | SF Symbol name |
+| `label` | `string` | — | Cell label |
+| `value` | `string` | — | Right-side value text |
+| `onPress` | `() => void` | — | Press handler |
+| `last` | `boolean` | `false` | Remove bottom separator |
+
+### ListToggleCell
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `icon` | `IconSymbolName` | — | SF Symbol name |
+| `label` | `string` | — | Cell label |
+| `value` | `boolean` | — | Switch state |
+| `onToggle` | `(value: boolean) => void` | — | Toggle handler |
+| `last` | `boolean` | `false` | Remove bottom separator |
+
+### ListActionCell
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Button label |
+| `onPress` | `() => void` | — | Press handler |
+| `destructive` | `boolean` | `false` | Red destructive styling |
+| `last` | `boolean` | `false` | Remove bottom separator |

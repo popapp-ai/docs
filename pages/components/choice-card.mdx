@@ -1,0 +1,57 @@
+import { PreviewImage } from '../../components/preview-image'
+
+# ChoiceCard
+
+Selectable card for picking one option from a set. Supports icon and subtitle.
+
+- **Tier 2** — requires `react-native-reanimated`
+- **Registry deps:** [Theme](/theme), [Haptics](/utils/haptics), [Touchable](/components/touchable)
+
+```bash [Terminal]
+npx popapp add choice-card
+```
+
+## Usage
+
+<PreviewImage src="/images/choice-card.png" alt="Choice card" />
+
+```tsx
+import { ChoiceCard } from "@/components/ui/choice-card";
+
+<ChoiceCard
+  title="Personal"
+  subtitle="For individual use"
+  icon={<IconSymbol name="person.fill" size={24} color={colors.primary} />}
+  selected={plan === "personal"}
+  onPress={() => setPlan("personal")}
+/>
+```
+
+## In a list
+
+```tsx
+{plans.map((plan) => (
+  <ChoiceCard
+    key={plan.id}
+    title={plan.name}
+    subtitle={plan.description}
+    selected={selected === plan.id}
+    onPress={() => setSelected(plan.id)}
+  />
+))}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `title` | `string` | — | Card title |
+| `subtitle` | `string` | — | Description text |
+| `icon` | `ReactNode` | — | Leading icon |
+| `selected` | `boolean` | `false` | Selection state |
+| `onPress` | `() => void` | — | Press handler |
+| `haptic` | `boolean` | `true` | Haptic feedback |
+
+:::tip
+For a simpler two-option case, use [ChoiceBinary](/components/choice-binary) instead.
+:::

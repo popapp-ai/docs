@@ -53,10 +53,11 @@
   background-color: var(--vocs-color_backgroundDark);
 }
 
-@media screen and (max-width: 1080px) {
-  .vocs_Sidebar {
-    border-left: 0 !important;
-  }
+.vocs_Sidebar_footer {
+  margin-left: calc(0px - var(--vocs-sidebar_horizontalPadding));
+  margin-right: calc(0px - var(--vocs-sidebar_horizontalPadding));
+  padding-left: var(--vocs-sidebar_horizontalPadding);
+  padding-right: var(--vocs-sidebar_horizontalPadding);
 }
 
 .vocs_Popover {
@@ -114,15 +115,19 @@
 }
 
 .vocs_SearchDialog_searchBox {
-  border-radius: 12px !important;
+  border-radius: 14px !important;
 }
 
 .vocs_DesktopSearch_search {
-  border-radius: 12px !important;
+  border-radius: 14px !important;
 }
 
 .vocs_SearchDialog_result {
-  border-radius: 12px !important;
+  border-radius: 14px !important;
+}
+
+.vocs_SearchDialog_searchShortcuts {
+  justify-content: center !important;
 }
 
 .vocs_CopyButton {
@@ -205,4 +210,17 @@
 .custom_Preview + .vocs_CodeBlock pre {
   border-top-left-radius: 0 !important;
   border-top-right-radius: 0 !important;
+}
+
+@media screen and (max-width: 1080px) {
+  .vocs_Sidebar {
+    border-left: 0 !important;
+    background-color: transparent !important;
+    overflow: visible
+  }
+}
+@media screen and (max-width: 720px) {
+  .vocs_CodeBlock, .vocs_Callout, .vocs_Tabs, .vocs_Pre_wrapper pre, .vocs_CodeTitle, .vocs_Tabs_list, .vocs_Tabs_content {
+    border-radius: 0 !important;
+  }
 }

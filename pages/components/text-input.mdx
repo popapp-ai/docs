@@ -1,0 +1,77 @@
+import { PreviewImage } from '../../components/preview-image'
+
+# TextInput
+
+Themed text input with label, error state, and icon slots.
+
+- **Tier 1** — no animation dependencies
+- **Registry deps:** [Theme](/theme)
+
+```bash [Terminal]
+npx popapp add text-input
+```
+
+## Usage
+
+```tsx
+import { TextInput } from "@/components/ui/text-input";
+
+<TextInput
+  label="Email"
+  placeholder="you@example.com"
+  value={email}
+  onChangeText={setEmail}
+/>
+```
+
+## With error state
+
+<PreviewImage src="/images/input-states.png" alt="Input states" />
+
+```tsx
+<TextInput
+  label="Password"
+  error="Must be at least 8 characters"
+  secureTextEntry
+  value={password}
+  onChangeText={setPassword}
+/>
+```
+
+## With icons
+
+```tsx
+<TextInput
+  label="Search"
+  leftSection={<IconSymbol name="magnifyingglass" size={18} color={colors.icon} />}
+  rightSection={<ActionIcon name="xmark" size="xs" onPress={clear} />}
+  value={query}
+  onChangeText={setQuery}
+/>
+```
+
+## Sizes
+
+<PreviewImage src="/images/input-sizes.png" alt="Input sizes" />
+
+```tsx
+<TextInput label="Small" size="sm" />   {/* 44px */}
+<TextInput label="Medium" size="md" />  {/* 48px */}
+<TextInput label="Large" size="lg" />   {/* 56px */}
+<TextInput label="X-Large" size="xl" /> {/* 64px */}
+```
+
+## Props
+
+| Prop | Type | Default | Description |
+|------|------|---------|-------------|
+| `label` | `string` | — | Label above the input |
+| `error` | `string` | — | Error message below the input |
+| `size` | `"sm" \| "md" \| "lg" \| "xl"` | `"md"` | Input height |
+| `leftSection` | `ReactNode` | — | Left icon/element |
+| `rightSection` | `ReactNode` | — | Right icon/element |
+| `disabled` | `boolean` | `false` | Disable interaction |
+| `containerStyle` | `ViewStyle` | — | Outer container style |
+| `inputStyle` | `TextStyle` | — | Inner input style |
+
+Extends `RNTextInputProps` — all standard TextInput props are supported.

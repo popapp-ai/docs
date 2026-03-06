@@ -1,12 +1,12 @@
-import { Preview } from '../../components/Preview'
+import { PreviewImage } from '../../components/preview-image'
 
 # Button
 
 Pressable button with variants, sizes, loading state, icons, haptic feedback, and Liquid Glass support.
 
-**Tier 1** — Zero animation dependencies. Pure React Native.
+- **Tier 1** — no animation dependencies
+- **Registry deps:** [Theme](/theme), [Haptics](/utils/haptics), [Glass](/utils/glass), [Touchable](/components/touchable)
 
-## Installation
 
 ```bash [Terminal]
 npx popapp add button
@@ -32,7 +32,7 @@ The `title` prop sets the button label. All standard `TouchableOpacityProps` are
 
 Five built-in variants control the button's visual style.
 
-<Preview src="/images/button-variants.png" alt="Button variants" />
+<PreviewImage src="/images/button-variants.png" alt="Button variants" />
 
 ```tsx
 // Solid (default) — filled primary background
@@ -67,7 +67,7 @@ When the button is `disabled`, the `solid` variant uses `muted` background and `
 
 Four sizes are available via the `size` prop. Default is `lg`.
 
-<Preview src="/images/button-sizes.png" alt="Button sizes" />
+<PreviewImage src="/images/button-sizes.png" alt="Button sizes" />
 
 ```tsx
 <Button size="xs" title="Extra Small" />
@@ -134,7 +134,7 @@ Use `colors.primaryForeground` for icons in `solid` buttons, `colors.primary` fo
 
 Set `fullWidth` to stretch the button to fill its container.
 
-<Preview src="/images/button-variants-full-width.png" alt="Full width button variants" />
+<PreviewImage src="/images/button-variants-full-width.png" alt="Full width button variants" />
 
 ```tsx
 <Button fullWidth title="Create Account" />
@@ -198,14 +198,6 @@ Pass `disabled` to prevent interaction. The `solid` variant adjusts its colors a
 :::tip
 `Button` extends `TouchableOpacityProps`, so all standard props like `onPress`, `style`, `activeOpacity`, `testID`, etc. are supported.
 :::
-
-## Dependencies
-
-Internal dependencies:
-- `theme` — Color tokens via `useTheme()`
-- `haptics` — `impactMedium()` for tactile feedback
-- `glass` — `SafeGlassView` and `isGlassAvailable()` for Liquid Glass
-- `touchable` — `Touchable` wrapper component
 
 ## Platforms
 
