@@ -24,17 +24,42 @@ import { TextInput } from "@/components/ui/text-input";
 />
 ```
 
-## With error state
+## States
 
 <PreviewImage src="/images/input-states.png" alt="Input states" />
 
 ```tsx
+{/* Focused */}
+<TextInput
+  label="Email"
+  placeholder="you@example.com"
+  value={email}
+  onChangeText={setEmail}
+/>
+
+{/* With password toggle */}
 <TextInput
   label="Password"
-  error="Must be at least 8 characters"
+  placeholder="Enter password"
   secureTextEntry
   value={password}
   onChangeText={setPassword}
+/>
+
+{/* With error */}
+<TextInput
+  label="With Error"
+  placeholder="Required"
+  error="This field is required"
+  value={field}
+  onChangeText={setField}
+/>
+
+{/* Disabled */}
+<TextInput
+  label="Disabled"
+  placeholder="Can't edit"
+  disabled
 />
 ```
 
@@ -55,10 +80,9 @@ import { TextInput } from "@/components/ui/text-input";
 <PreviewImage src="/images/input-sizes.png" alt="Input sizes" />
 
 ```tsx
-<TextInput label="Small" size="sm" />   {/* 44px */}
-<TextInput label="Medium" size="md" />  {/* 48px */}
-<TextInput label="Large" size="lg" />   {/* 56px */}
-<TextInput label="X-Large" size="xl" /> {/* 64px */}
+<TextInput label="Small" placeholder="SM" size="sm" />
+<TextInput label="Medium" placeholder="MD" size="md" />
+<TextInput label="Large" placeholder="LG" size="lg" />
 ```
 
 ## Props

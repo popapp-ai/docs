@@ -18,9 +18,10 @@ npx popapp add action-icon
 ```tsx
 import { ActionIcon } from "@/components/ui/action-icon";
 
-<ActionIcon name="arrow.left" onPress={goBack} />
-<ActionIcon name="gear" variant="subtle" onPress={openSettings} />
-<ActionIcon name="trash" variant="destructive" onPress={handleDelete} />
+<ActionIcon name="plus" onPress={handleAdd} />
+<ActionIcon name="heart.fill" onPress={handleFavorite} />
+<ActionIcon name="trash" variant="solid" size="lg" onPress={handleDelete} />
+<ActionIcon name="square.and.arrow.up" onPress={handleShare} />
 ```
 
 ## Sizes

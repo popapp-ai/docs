@@ -20,12 +20,12 @@ import { OptionGroup } from "@/components/ui/option-group";
 
 <OptionGroup
   mode="single"
-  value={goal}
-  onChange={setGoal}
+  value={size}
+  onChange={setSize}
   options={[
-    { value: "lose", label: "Lose Weight", description: "Caloric deficit" },
-    { value: "maintain", label: "Maintain", description: "Stay at current weight" },
-    { value: "gain", label: "Build Muscle", description: "Caloric surplus" },
+    { value: "small", label: "Small", description: "640 x 480" },
+    { value: "medium", label: "Medium", description: "1280 x 720" },
+    { value: "large", label: "Large", description: "1920 x 1080" },
   ]}
 />
 ```
@@ -35,16 +35,36 @@ import { OptionGroup } from "@/components/ui/option-group";
 <PreviewImage src="/images/option-group-multi-select.png" alt="Multi select" />
 
 ```tsx
-const [interests, setInterests] = useState<string[]>([]);
+const [features, setFeatures] = useState<string[]>([]);
 
 <OptionGroup
   mode="multi"
-  value={interests}
-  onChange={setInterests}
+  value={features}
+  onChange={setFeatures}
   options={[
-    { value: "yoga", label: "Yoga", icon: <IconSymbol name="figure.yoga" /> },
-    { value: "running", label: "Running", icon: <IconSymbol name="figure.run" /> },
-    { value: "weights", label: "Weights", icon: <IconSymbol name="dumbbell.fill" /> },
+    { value: "notifications", label: "Notifications", description: "Enable notifications" },
+    { value: "dark-mode", label: "Dark Mode", description: "Enable dark mode" },
+    { value: "auto-save", label: "Auto-save", description: "Enable auto-save" },
+  ]}
+/>
+```
+
+## Simple multi select
+
+<PreviewImage src="/images/option-group-multi-select-simply.png" alt="Simple multi select" />
+
+```tsx
+const [connections, setConnections] = useState<string[]>([]);
+
+<OptionGroup
+  mode="multi"
+  value={connections}
+  onChange={setConnections}
+  options={[
+    { value: "wifi", label: "Wi-Fi" },
+    { value: "bluetooth", label: "Bluetooth" },
+    { value: "airdrop", label: "AirDrop" },
+    { value: "hotspot", label: "Personal Hotspot" },
   ]}
 />
 ```

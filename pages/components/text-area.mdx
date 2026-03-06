@@ -19,10 +19,18 @@ npx popapp add text-area
 import { TextArea } from "@/components/ui/text-area";
 
 <TextArea
-  label="Description"
-  placeholder="Tell us about yourself..."
-  value={description}
-  onChangeText={setDescription}
+  label="Comments"
+  placeholder="Write your thoughts..."
+  value={comments}
+  onChangeText={setComments}
+/>
+
+<TextArea
+  label="With Error"
+  placeholder="Min 20 chars"
+  error="Too short"
+  value={text}
+  onChangeText={setText}
 />
 ```
 

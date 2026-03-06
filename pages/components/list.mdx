@@ -22,28 +22,54 @@ import {
   ListDivider,
 } from "@/components/ui/list";
 
-<ListSection title="Account">
+<ListSection title="General">
   <ListNavigationCell
     icon="person.fill"
-    label="Profile"
-    value="John Doe"
-    onPress={() => router.push("/profile")}
+    label="Account"
+    value="john@example.com"
+    onPress={() => router.push("/account")}
   />
   <ListNavigationCell
     icon="bell.fill"
     label="Notifications"
     onPress={() => router.push("/notifications")}
   />
+  <ListNavigationCell
+    icon="globe"
+    label="Language"
+    value="English"
+    onPress={() => router.push("/language")}
+    last
+  />
+</ListSection>
+
+<ListSection title="Preferences">
   <ListToggleCell
     icon="moon.fill"
     label="Dark Mode"
     value={isDark}
     onToggle={setIsDark}
+  />
+  <ListToggleCell
+    icon="bell.fill"
+    label="Notifications"
+    value={notifications}
+    onToggle={setNotifications}
+  />
+  <ListToggleCell
+    icon="chart.bar.fill"
+    label="Analytics"
+    value={analytics}
+    onToggle={setAnalytics}
     last
   />
 </ListSection>
 
-<ListSection title="Danger Zone">
+<ListSection>
+  <ListActionCell
+    label="Reset Settings"
+    onPress={handleReset}
+  />
   <ListActionCell
     label="Delete Account"
     destructive

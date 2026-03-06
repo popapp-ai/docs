@@ -11,7 +11,7 @@ export default defineConfig({
     dark: '/assets/ui-logo-dark.svg',
   },
   topNav: [
-    { text: 'PopApp', link: 'https://popapp.run' },
+    { text: 'PopApp', link: 'https://popapp.dev' },
     { text: 'GitHub', link: 'https://github.com/popapp-ai/ui' },
   ],
   sidebar: [

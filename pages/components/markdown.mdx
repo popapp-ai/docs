@@ -20,12 +20,19 @@ npx popapp add markdown
 import { Markdown } from "@/components/ui/markdown";
 
 <Markdown>{`
-# Hello World
+# Heading 1
 
 This is **bold** and *italic* text.
 
-\`\`\`js
-const x = 42;
+- List item one
+- List item two
+- List item three
+
+Here is \`inline code\` and:
+
+\`\`\`
+code block
+with multiple lines
 \`\`\`
 `}</Markdown>
 ```

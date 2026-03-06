@@ -1,3 +1,5 @@
+import { PreviewImage } from '../../components/preview-image'
+
 # SliderBar
 
 Animated slider with gesture control, step snapping, labels, and haptic feedback.
@@ -12,14 +14,22 @@ npx popapp add slider-bar
 
 ## Usage
 
+<PreviewImage src="/images/image 127.png" alt="Slider bar" />
+
 ```tsx
 import { SliderBar } from "@/components/ui/slider-bar";
 
 <SliderBar
-  value={volume}
-  onValueChange={setVolume}
+  value={percentage}
+  onValueChange={setPercentage}
   min={0}
-  max={1}
+  max={100}
+  step={1}
+  labels={[
+    { text: "0%", position: 0 },
+    { text: "50%", position: 0.5 },
+    { text: "100%", position: 1 },
+  ]}
 />
 ```
 

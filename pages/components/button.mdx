@@ -48,7 +48,7 @@ Five built-in variants control the button's visual style.
 <Button variant="subtle" title="Subtle" />
 
 // Destructive — danger/delete actions
-<Button variant="destructive" title="Delete" />
+<Button variant="destructive" title="Destructive" />
 ```
 
 | Variant | Background | Text Color | Border |
@@ -70,10 +70,10 @@ Four sizes are available via the `size` prop. Default is `lg`.
 <PreviewImage src="/images/button-sizes.png" alt="Button sizes" />
 
 ```tsx
-<Button size="xs" title="Extra Small" />
-<Button size="sm" title="Small" />
-<Button size="md" title="Medium" />
-<Button size="lg" title="Large" />
+<Button size="xs" title="XS" />
+<Button size="sm" title="SM" />
+<Button size="md" title="MD" />
+<Button size="lg" title="LG" />
 ```
 
 | Size | Height | Border Radius | Font Size | Horizontal Padding |
@@ -137,7 +137,17 @@ Set `fullWidth` to stretch the button to fill its container.
 <PreviewImage src="/images/button-variants-full-width.png" alt="Full width button variants" />
 
 ```tsx
-<Button fullWidth title="Create Account" />
+{/* Glass variant (default) */}
+<Button fullWidth title="Full Width Button" />
+
+{/* Without glass */}
+<Button fullWidth glass={false} title="Not Glass Button" />
+
+{/* Subtle without glass */}
+<Button fullWidth glass={false} variant="subtle" title="Not Glass Subtle Button" />
+
+{/* Disabled */}
+<Button fullWidth disabled title="Disabled" />
 ```
 
 ## Haptic Feedback

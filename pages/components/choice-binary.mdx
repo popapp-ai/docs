@@ -20,11 +20,11 @@ import { ChoiceBinary } from "@/components/ui/choice-binary";
 
 <ChoiceBinary
   options={[
-    { value: "metric", label: "Metric", icon: <IconSymbol name="ruler" /> },
-    { value: "imperial", label: "Imperial", icon: <IconSymbol name="ruler" /> },
+    { value: "yes", label: "Yes", icon: <IconSymbol name="checkmark" /> },
+    { value: "no", label: "No", icon: <IconSymbol name="xmark" /> },
   ]}
-  value={system}
-  onChange={setSystem}
+  value={answer}
+  onChange={setAnswer}
 />
 ```
 

@@ -25,8 +25,13 @@ const [visible, setVisible] = useState(false);
 <Button title="Open" onPress={() => setVisible(true)} />
 
 <BottomSheet visible={visible} onDismiss={() => setVisible(false)}>
-  <Text>Sheet content here</Text>
-  <Button title="Close" onPress={() => setVisible(false)} />
+  <Text style={{ fontSize: 20, fontWeight: "bold" }}>Bottom Sheet</Text>
+  <Text style={{ color: colors.mutedForeground }}>
+    This is a pan-to-dismiss bottom sheet with spring animations.
+    Swipe down or tap the backdrop to dismiss.
+  </Text>
+  <RulerSlider value={50} onValueChange={setValue} min={0} max={100} unit="ML" />
+  <Button fullWidth title="Close" onPress={() => setVisible(false)} />
 </BottomSheet>
 ```
 
