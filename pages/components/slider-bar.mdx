@@ -1,4 +1,5 @@
 import { PreviewImage } from '../../components/preview-image'
+import { PreviewVideo } from '../../components/preview-video'
 
 # SliderBar
 
@@ -14,7 +15,7 @@ npx popapp add slider-bar
 
 ## Usage
 
-<PreviewImage src="/images/image 127.png" alt="Slider bar" />
+<PreviewVideo src="/videos/slider-bar.mp4" />
 
 ```tsx
 import { SliderBar } from "@/components/ui/slider-bar";
@@ -36,6 +37,8 @@ import { SliderBar } from "@/components/ui/slider-bar";
 ## Thick track variant
 
 A pill-shaped slider with no thumb — ideal for compact controls like volume or brightness.
+
+<PreviewImage src="/images/slider-bar-track.png" alt="Thick track variant" />
 
 ```tsx
 <SliderBar
@@ -73,19 +76,20 @@ Pressing a label jumps the slider to that position.
 />
 ```
 
-## Sticky finger
+## Custom styling
 
-By default the `"thumb"` variant snaps the thumb to your finger on touch start so dragging feels direct. Set `stickyToFinger={false}` to preserve the initial offset (useful when the thumb is large or precision matters).
+Override track dimensions and colors to match your design.
 
 ```tsx
 <SliderBar
-  value={val}
-  onValueChange={setVal}
-  stickyToFinger={false}
+  value={brightness}
+  onValueChange={setBrightness}
+  trackSize={12}
+  trackRadius={4}
+  progressColor="#FFD60A"
+  backgroundColor="#1C1C1E"
 />
 ```
-
-The `"track"` variant defaults to `stickyToFinger={false}` — override with `stickyToFinger={true}` if you want direct tracking.
 
 ## Props
 
@@ -99,4 +103,8 @@ The `"track"` variant defaults to `stickyToFinger={false}` — override with `st
 | `labels` | `SliderLabel[]` | — | Position labels with optional icons (tappable) |
 | `haptic` | `boolean` | `true` | Haptic feedback on step changes |
 | `variant` | `"thumb" \| "track"` | `"thumb"` | Visual style — thin track with thumb or thick pill track |
-| `stickyToFinger` | `boolean` | `true` (thumb) / `false` (track) | Animate thumb to finger on touch start for direct tracking |
+| `trackSize` | `number` | `6` (thumb) / `28` (track) | Track height in px |
+| `trackRadius` | `number` | half of track height | Track border-radius in px |
+| `progressColor` | `string` | theme `primary` | Progress fill color |
+| `backgroundColor` | `string` | theme `border` | Track background color |
+| `style` | `StyleProp<ViewStyle>` | — | Container style |
